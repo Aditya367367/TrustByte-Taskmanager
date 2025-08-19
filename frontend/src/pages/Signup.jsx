@@ -3,6 +3,7 @@ import API from "../utils/api";
 import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
+  const [name, setName] = useState(""); // add state for name
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -21,7 +22,7 @@ export default function Signup() {
 
     setLoading(true);
     try {
-      await API.post("/auth/signup", { email, password });
+      await API.post("/auth/signup", { name, email, password }); // send name
       alert("Signup successful! Please login.");
       navigate("/login");
     } catch (err) {
@@ -32,7 +33,7 @@ export default function Signup() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-900  font-sans">
+    <div className="flex justify-center items-center min-h-screen bg-gray-900 font-sans">
       <form
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded-xl shadow-lg w-96"
@@ -46,6 +47,16 @@ export default function Signup() {
             {error}
           </p>
         )}
+
+        {/* Name input */}
+        <input
+          type="text"
+          placeholder="Full Name"
+          className="w-full border p-3 mb-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
 
         <input
           type="email"
