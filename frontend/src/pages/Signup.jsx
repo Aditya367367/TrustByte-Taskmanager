@@ -3,17 +3,19 @@ import API from "../utils/api";
 import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
-  const [name, setName] = useState(""); // add state for name
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    setSuccess("");
 
     if (password !== confirmPassword) {
       setError("Passwords do not match!");
@@ -22,9 +24,11 @@ export default function Signup() {
 
     setLoading(true);
     try {
-      await API.post("/auth/signup", { name, email, password }); // send name
-      alert("Signup successful! Please login.");
-      navigate("/login");
+      await API.post("/auth/signup", { name, email, password });
+      setSuccess("Signup successful! Redirecting to login...");
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
     } catch (err) {
       setError(err.response?.data?.msg || "Signup failed. Try again.");
     } finally {
@@ -48,7 +52,12 @@ export default function Signup() {
           </p>
         )}
 
-        {/* Name input */}
+        {success && (
+          <p className="bg-green-100 text-green-600 p-2 rounded mb-3 text-sm text-center">
+            {success}
+          </p>
+        )}
+
         <input
           type="text"
           placeholder="Full Name"
