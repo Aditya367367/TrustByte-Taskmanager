@@ -10,7 +10,7 @@ import { fileURLToPath } from "url";
 
 import authRoutes from "./routes/auth.js";
 import taskRoutes from "./routes/task.js";
-import testimonialRoutes from "./routes/testimonial.js"; 
+import testimonialRoutes from "./routes/testimonial.js";
 
 dotenv.config();
 
@@ -36,10 +36,14 @@ app.use("/uploads", (req, res, next) => {
   next();
 }, express.static(path.join(__dirname, "uploads")));
 
+app.get("/", (req, res) => {
+  res.send("Backend running ✅");
+});
+
 app.use("/api/auth", authRoutes);
 app.use("/api/tasks", taskRoutes);
-app.use("/api/testimonials", testimonialRoutes); 
-  
+app.use("/api/testimonials", testimonialRoutes);
+
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
