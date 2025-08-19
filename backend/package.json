@@ -8,7 +8,10 @@
     "dev": "nodemon server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": {
+    "name": "Aditya chauhan",
+    "email": "Suryachauhan367367@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/aditya-chauhan-1b1a95228/"},
   "license": "ISC",
   "type": "module",
   "dependencies": {
