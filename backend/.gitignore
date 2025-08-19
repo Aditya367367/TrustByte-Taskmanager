@@ -1,0 +1,26 @@
+# Dependency directory
+/node_modules
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+
+# Log files
+npm-debug.log
+yarn-error.log
+.log
+logs
+
+# Build artifacts
+/dist
+/build
+/coverage
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Other
+/uploads/
