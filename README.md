@@ -131,6 +131,13 @@ npm install
 
 ---
 
+
+## 📚 Documentation
+
+- [API Reference](./API.md)
+
+
+
 ## 🧩 Reusable Components
 
 - **Navbar:** Navigation and user actions
