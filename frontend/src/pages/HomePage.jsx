@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CheckCircle, Clock, BarChart2, ArrowRight, Star, MessageSquare, Trash2, Edit } from "lucide-react";
@@ -80,7 +81,7 @@ export default function HomePage() {
   const fullText = "Organize Your World, One Task at a Time.";
   const typingSpeed = 10;
 
-  const API_URL = API.defaults.baseURL.replace("/api", "");
+  const API_URL = API.defaults.baseURL ? API.defaults.baseURL.replace("/api", "") : "";
 
   useEffect(() => {
     let timeout;

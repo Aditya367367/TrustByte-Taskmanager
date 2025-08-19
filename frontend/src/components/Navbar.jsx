@@ -50,13 +50,13 @@ export default function Navbar() {
     }
   };
   
-  const API_URL = API.defaults.baseURL.replace("/api", "");
+  // FIX: Conditionally check if baseURL exists before calling .replace()
+  const API_URL = API.defaults.baseURL ? API.defaults.baseURL.replace("/api", "") : "";
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-[50px] bg-gray-900 shadow-lg">
       <nav className="flex justify-between items-center px-4 md:px-12 py-4">
         <Link to="/" className="text-white font-bold text-xl uppercase flex items-center gap-2">
-        
           <Logo size={40} className="rounded-full"/> TrustByte
         </Link>
 
@@ -160,7 +160,7 @@ export default function Navbar() {
                   ) : (
                     <User size={32} className="text-white border-2 border-purple-500 rounded-full p-1" />
                   )}
-                  <span className="text-sm">{user.email}</span>
+                  {user.email && <span className="text-sm">{user.email}</span>}
                 </Link>
                 <button
                   onClick={() => { handleLogout(); toggleDrawer(); }}
