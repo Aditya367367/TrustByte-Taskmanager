@@ -2,6 +2,10 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Aditya chauhan",
+    "email": "Suryachauhan367367@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/aditya-chauhan-1b1a95228/"},
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.7.0",
